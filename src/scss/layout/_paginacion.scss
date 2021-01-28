@@ -14,6 +14,10 @@
         font-size: 2rem;
         display: block;
 
+        &.ocultar {
+            visibility: hidden;
+        }
+
         &:hover {
             cursor: pointer;
         }

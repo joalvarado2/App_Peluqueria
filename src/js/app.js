@@ -16,6 +16,9 @@ function iniciarApp() {
     paginaSiguiente();
 
     paginaAnterior();
+
+    // comprueba la pagina actual para ocultar o mostrar la paginacion
+    botonesPaginador();
 };
 
 function mostrarSeccion() {
@@ -115,9 +118,38 @@ function selecionarServicio(e) {
 }
 
 function paginaSiguiente() {
-    const paginaSiguiente = Document.querySelector("")
-} 
+    const paginaSiguiente = document.querySelector('#siguiente');
+    paginaSiguiente.addEventListener('click', () => {
+        pagina++;
+        botonesPaginador();
+    });
+}
 
 function paginaAnterior() {
+    const paginaAnterior = document.querySelector('#anterior');
+    paginaAnterior.addEventListener('click', () => {
+        pagina--;
 
+        botonesPaginador();
+    });
+}
+
+function botonesPaginador() {
+    const paginaSiguiente = document.querySelector('#siguiente');
+    const paginaAnterior = document.querySelector('#anterior');
+
+    if(pagina  === 1) {
+        paginaAnterior.classList.add('ocultar');
+        paginaSiguiente.classList.remove('ocultar');
+    } else if (pagina === 3) {
+        paginaSiguiente.classList.add('ocultar');
+        paginaAnterior.classList.remove('ocultar');
+
+        mostrarResumen(); // Estamos en la página 3, carga el resumen de la cita
+    } else {
+        paginaAnterior.classList.remove('ocultar');
+        paginaSiguiente.classList.remove('ocultar');
+    }
+
+    mostrarSeccion(); // Cambia la sección que se muestra por la de la página
 }
