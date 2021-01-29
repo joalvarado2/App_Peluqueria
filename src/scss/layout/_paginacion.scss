@@ -5,7 +5,7 @@
 
     button {
         background-color: $azul;
-        padding: 1rem 3rem;
+        padding: 1rem 1rem;
         text-align: center;
         color: $blanco;
         border: none;
@@ -14,6 +14,9 @@
         font-size: 2rem;
         display: block;
 
+        @include tablet {
+            padding: 1rem 3rem;
+        }
         &.ocultar {
             visibility: hidden;
         }
